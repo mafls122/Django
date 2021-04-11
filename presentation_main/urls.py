@@ -1,7 +1,6 @@
 from django.urls import path
-from presentation_main import views
+from . import views
 
-app_name = 'main'
 urlpatterns = [
     path('', views.index, name='index'),
-    ]
+]
