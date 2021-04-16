@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+	<script src="https://kit.fontawesome.com/e9edb88997.js" crossorigin="anonymous"></script>
 	{% load static %}<link rel="stylesheet" href="{% static 'sub.css' %}" />
 	<noscript><link rel="stylesheet" href="{% static 'noscript.css' %}" /></noscript>
 	<link rel="shortcut icon" href="{% static 'images/gfnk.ico' %}">
@@ -13,6 +13,13 @@
 
 		<!-- Wrapper-->
 			<div id="wrapper">
+
+				<!-- Header -->
+				<nav class="navbar navbar-default navbar-fixed-top">
+					<div class="brand">
+						발표의 참견
+					</div>
+				</nav>
 
 				<!-- Nav -->
 					<nav id="nav">
@@ -28,12 +35,19 @@
 							<article id="home" class="panel">
 								<header>
 									{% block content %}
-										<h3>발표 동영상 파일을 업로드해 주세요.</h3><hr>
+									<div>
+										<p class="work_p">
+											<i class="fas fa-angle-right">  발표 동영상 파일을 업로드해 주세요.</i>
+										</p>
+										<hr>
 											<form action="http://127.0.0.1:8000/upload_file/" method="POST" enctype="multipart/form-data">
 												{% csrf_token %}
 												<input type="file" name="file" required="required">
 												<div id = "radio-div"><br>
-													<h3>당신의 성별을 선택해 주세요.</h3><hr>
+													<p class="work_p">
+														<i class="fas fa-angle-right">  당신의 성별을 선택해 주세요.</i>
+													</p>
+													<hr>
 														<div class="btn-group" data-toggle="buttons" id="radiogroup">
 															<input type="radio" name="check_option" value="0" required="required">남
 															<input type="radio" name="check_option" value="1" id = "radio-woman">여
@@ -43,6 +57,7 @@
 													</div>
 												</div>
 											</form>
+									</div>
 									{% endblock %}
 								</header>
 
@@ -51,14 +66,11 @@
 						<!-- Work -->
 							<article id="work" class="panel">
 								<header>
-									<h2>Report</h2>
-								</header>
-								<p class="work_p">
-									발표 동영상의 종합 분석 결과입니다.<hr>
-								</p>
+									<h2  class="work_title">Report</h2>
+								</header><hr>
 								<section>
-									<h2>Pose</h2>
-									<p class="work_p">
+									<h3  class="work_title">Pose</h3>
+									<p class="normal_p">
 									발표 자세(pose)에 대한 분석 결과입니다.</p>
 									<div class="row">
 										<div class="chart-div">
@@ -68,38 +80,22 @@
 										<div class="col-4 col-6-medium col-12-small">
 											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
 										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
-										</div>
+									</div>
+								</section>
+								<section>
+									<h3  class="work_title">Face</h3>
+									<p class="normal_p">
+									발표 얼굴(face) 변화에 대한 분석 결과입니다.</p>
+									<div class="row">
+										<div class="chart-div">
+											<canvas id="FaceChartCanvas" width="300px" height="300px"></canvas>
+        								</div>
 										<div class="col-4 col-6-medium col-12-small">
 											<a href="#" class="image fit"><img src="{% static 'images/work/pic01.jpg' %}" alt=""></a>
 										</div>
 									</div>
 								</section>
+
 							</article>
 
 						<!-- Contact -->
